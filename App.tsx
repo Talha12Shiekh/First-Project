@@ -14,19 +14,27 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import EmptyScreen from "./Screens/EmptyScreen";
 import { FontAwesome6,AntDesign,SimpleLineIcons,Entypo,MaterialCommunityIcons } from '@expo/vector-icons';
-
+import {
+  useFonts,
+  NunitoSans_400Regular,
+} from '@expo-google-fonts/nunito-sans';
 
 
 const Tab = createBottomTabNavigator();
 
-const TAB_BAR_ICONS_SIZE = 20
+const TAB_BAR_ICONS_SIZE = 20;
+
 
 export default function App() {
+  let [fontsLoaded] = useFonts({
+    NunitoSans_400Regular,
+  });
   return (
-    // <ScrollView>
     <NavigationContainer>
       <PaperProvider>
-        <Tab.Navigator screenOptions={{ headerShown: false,tabBarActiveTintColor: ORANGE_COLOR, }}>
+        <Tab.Navigator screenOptions={{ headerShown: false,tabBarActiveTintColor: ORANGE_COLOR,tabBarLabelStyle:{
+          fontFamily:"NunitoSans_400Regular"
+        } }}>
           <Tab.Screen
           options={{
             tabBarIcon: ({ color, size }) => (

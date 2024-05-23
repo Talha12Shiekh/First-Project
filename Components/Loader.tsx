@@ -1,7 +1,15 @@
 import {View,Text,StyleSheet} from "react-native";
 import {ORANGE_COLOR} from "../Constants";
+import {
+    useFonts,
+    NunitoSans_400Regular,
+  } from '@expo-google-fonts/nunito-sans';
 
 const Loader = () => {
+    let [fontsLoaded] = useFonts({
+        NunitoSans_400Regular,
+      });
+
     return <View style={styles.loaderContainer}>
     <View style={styles.loaderTextContainer}>
         <Text style={styles.white}>$450</Text>
@@ -23,7 +31,7 @@ const styles = StyleSheet.create({
     },
     loader:{
         width:"90%",
-        backgroundColor:"grey",
+        backgroundColor:"rgba(255,255,255,0.5)",
         height:10,
         borderRadius:50,
         alignSelf:"center",
@@ -42,10 +50,11 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         width:"90%",
         alignSelf:"center",
-        justifyContent:"space-between"
+        justifyContent:"space-between",
     },
     white:{
-        color:"white"
+        color:"white",
+        fontFamily:"NunitoSans_400Regular"
     }
 })
 

@@ -1,10 +1,18 @@
 import { Card, Text } from "react-native-paper";
 import { View, StyleSheet } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
-import {ORANGE_COLOR,CARDS_DATA} from "../Constants";
+import {CARDS_DATA} from "../Constants";
+import {
+  useFonts,
+  NunitoSans_600SemiBold,
+  NunitoSans_800ExtraBold,
+} from '@expo-google-fonts/nunito-sans';
 
 
 const SingleCard = () => {
+  let [fontsLoaded] = useFonts({
+    NunitoSans_600SemiBold,
+    NunitoSans_800ExtraBold,
+  });
   return (
     <View style={styles.cardsContainer}>
         {
@@ -12,8 +20,8 @@ const SingleCard = () => {
                 return <Card key={key} style={styles.card}>
                 <Card.Content style={styles.cardContent}>
                   <View style={{width:"100%"}}>
-                    <Text variant="titleSmall" style={{fontWeight:"bold"}}>{title}</Text>
-                    <Text variant="bodyMedium">{description}</Text>
+                    <Text variant="titleSmall" style={styles.title}>{title}</Text>
+                    <Text variant="bodyMedium" style={styles.desc}>{description}</Text>
                   </View>
                   <View>
                     {Icon}
@@ -44,6 +52,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent:"space-around",
   },
+  title:{
+    fontFamily:"NunitoSans_800ExtraBold"
+  },
+  desc:{
+    fontFamily:"NunitoSans_600SemiBold"
+  }
 });
 
 export default SingleCard;

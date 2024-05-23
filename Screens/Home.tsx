@@ -1,41 +1,45 @@
 import {Text,StyleSheet,View,TouchableOpacity} from "react-native";
 import {ORANGE_COLOR} from "../Constants";
 import { AntDesign } from '@expo/vector-icons';
-// import {
-//   useFonts,
-//   NunitoSans_200ExtraLight,
-//   NunitoSans_300Light,
-//   NunitoSans_400Regular,
-//   NunitoSans_600SemiBold,
-//   NunitoSans_700Bold,
-//   NunitoSans_800ExtraBold,
-//   NunitoSans_900Black,
-// } from '@expo-google-fonts/nunito-sans';
+import {
+  useFonts,
+  NunitoSans_200ExtraLight,
+  NunitoSans_300Light,
+  NunitoSans_400Regular,
+  NunitoSans_600SemiBold,
+  NunitoSans_700Bold,
+  NunitoSans_800ExtraBold,
+  NunitoSans_900Black,
+} from '@expo-google-fonts/nunito-sans';
+// import AppLoading from 'expo-app-loading';
+
 
 const Home = () => {
-    // let [fontsLoaded] = useFonts({
-    //     NunitoSans_200ExtraLight,
-    //     NunitoSans_300Light,
-    //     NunitoSans_400Regular,
-    //     NunitoSans_600SemiBold,
-    //     NunitoSans_700Bold,
-    //     NunitoSans_800ExtraBold,
-    //     NunitoSans_900Black,
-    //   });
+    let [fontsLoaded] = useFonts({
+        NunitoSans_200ExtraLight,
+        NunitoSans_300Light,
+        NunitoSans_400Regular,
+        NunitoSans_600SemiBold,
+        NunitoSans_700Bold,
+        NunitoSans_800ExtraBold,
+        NunitoSans_900Black,
+      });
 
 
-
+      if (!fontsLoaded) {
+        return <View />
+      } 
     
     return (
             <View style={styles.homeContainer}>
         <View style={styles.home}>
         <View style={styles.cornerBall}>
             <Text style={styles.ballText}>penny</Text>
-            <Text style={[styles.ballText,{bottom:40,right:40,fontWeight:"bold"}]}>appeal</Text>
+            <Text style={[styles.ballText,styles.appeal]}>appeal</Text>
         </View>
     </View>
     <View style={styles.searchBarContainer}>
-        <Text style={styles.searchText}><Text style={{fontWeight:"bold"}}>Salam,</Text> Ahmed</Text>
+        <Text style={[styles.searchText]}><Text style={{fontWeight:"bold",fontFamily:"NunitoSans_700Bold"}}>Salam,</Text> Ahmed</Text>
         <TouchableOpacity>
             <AntDesign name="search1" size={35} color="white" />
         </TouchableOpacity>
@@ -62,6 +66,7 @@ const styles = StyleSheet.create({
         right:50,
         bottom:80,
         color:ORANGE_COLOR,
+        fontFamily: 'NunitoSans_300Light'
     },
     homeContainer:{
         flexDirection:"row"
@@ -75,7 +80,11 @@ const styles = StyleSheet.create({
     },
     searchText:{
         fontSize:20,
-        color:"white"
+        color:"white",
+        fontFamily:"NunitoSans_400Regular"
+    },
+    appeal:{
+        bottom:40,right:40,fontWeight:"bold",fontFamily: 'NunitoSans_700Bold'
     }
 })
 

@@ -1,6 +1,11 @@
 import { Card, Text } from "react-native-paper";
 import { View, StyleSheet, ScrollView,ImageSourcePropType,ViewStyle } from "react-native";
-
+import {
+  useFonts,
+  NunitoSans_600SemiBold,
+  NunitoSans_700Bold,
+  NunitoSans_400Regular
+} from '@expo-google-fonts/nunito-sans';
 
 interface CardProps {
     image:ImageSourcePropType,
@@ -10,13 +15,20 @@ interface CardProps {
     width:string 
 }
 
+export const CARD_TITLE_COLOR = "#3B3F49"
+
 const SingleCard = ({image,title,description,showDescription,width}:CardProps) => {
+  let [fontsLoaded] = useFonts({
+    NunitoSans_600SemiBold,
+    NunitoSans_700Bold,
+    NunitoSans_400Regular
+  });
     return <Card style={[styles.card,{width}]}>
     <Card.Cover style={styles.cardImage} source={image} />
     <View>
       <View style={styles.cardContent}>
-        <Text variant="titleMedium">{title}</Text>
-        {showDescription && <Text variant="titleMedium">{description}</Text>}
+        <Text variant="titleMedium" style={styles.cardTitle}>{title}</Text>
+        {showDescription && <Text variant="titleMedium" style={styles.cardDescription}>{description}</Text>}
       </View>
     </View>
   </Card>
@@ -39,6 +51,11 @@ const styles = StyleSheet.create({
       cardContent: {
         padding: 15,
       },
+      cardDescription:{
+        fontFamily:"NunitoSans_400Regular",
+        color:"grey"
+      },
+      cardTitle:{fontFamily:"NunitoSans_700Bold",color:CARD_TITLE_COLOR}
 })
 
 export default SingleCard;

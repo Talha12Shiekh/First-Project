@@ -1,7 +1,12 @@
 import { TouchableOpacity, View, Text, StyleSheet } from "react-native";
 import { ORANGE_COLOR } from "../Constants";
+import { useFonts, NunitoSans_700Bold,NunitoSans_400Regular } from "@expo-google-fonts/nunito-sans";
 
 const QuestionButton = () => {
+  let [fontsLoaded] = useFonts({
+    NunitoSans_700Bold,
+    NunitoSans_400Regular
+  });
   return (
     <View style={styles.container}>
       <TouchableOpacity>
@@ -37,7 +42,7 @@ const styles = StyleSheet.create({
   },
   btnText:{
     color:"white",
-    fontWeight:"bold"
+    fontFamily:"NunitoSans_700Bold"
   }
 });
 
